@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose, {Mongoose} from "mongoose";
 
 const MongoDbUrl = process.env.MONGODB_URL;
