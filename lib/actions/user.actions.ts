@@ -11,6 +11,8 @@ export async function createUser(user: CreateUserParams) {
   try {
     await connectToDatabase();
 
+    console.log("User create krte hue data base connect ho chuka hai ");
+
     const newUser = await User.create(user);
 
     return JSON.parse(JSON.stringify(newUser));

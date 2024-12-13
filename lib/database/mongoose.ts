@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose, {Mongoose} from "mongoose";
 
-const MongoDbUrl = process.env.MONGODB_URL;
+const MONGODB_URL = process.env.MONGODB_URL;
 
 
 interface MongooseConnection { 
@@ -17,17 +17,22 @@ if(!cached){
     }
 }
 
-export const connectToDatabase = async() => {
-    if(cached.conn) return cached.conn;
+export const connectToDatabase = async () => {
+    if (cached.conn) return cached.conn;
 
-    if(!MongoDbUrl) throw new Error('Missing MongoDb Url');
+    if (!MONGODB_URL) throw new Error('Missing MongoDb Url');
 
-    cached.promise = cached.promise || mongoose.connect(MongoDbUrl,{
-        dbName: "imaginify",
-        bufferCommands: false
-    });
-
-    cached.conn = await cached.promise;
+    try {
+        cached.promise = cached.promise || mongoose.connect(MONGODB_URL, {
+            dbName: "imaginify",
+            bufferCommands: false,
+        });
+        cached.conn = await cached.promise;
+        console.log("Database connected successfully");
+    } catch (error) {
+        console.error("Failed to connect to database:", error);
+        throw error;
+    }
 
     return cached.conn;
-}
+};
