@@ -1,5 +1,7 @@
 "use server"
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils"
