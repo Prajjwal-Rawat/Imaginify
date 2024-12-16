@@ -1,5 +1,7 @@
 "use client"
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -196,7 +198,11 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
       startTransition(async () => {
         await updateCredits(userId, creditFee)
-      })
+      });
+
+      if(isPending){
+        console.log("Transformation in progress..");
+      }
     }
 
 
