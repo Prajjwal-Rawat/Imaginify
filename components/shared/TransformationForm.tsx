@@ -1,7 +1,5 @@
 "use client"
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -68,6 +66,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     })
 
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const generateTransformationUrl = (image: any, config: any) => {
         if (!image?.publicId) {
             console.error("Invalid image data: Missing publicId");
@@ -160,6 +159,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
        const imageSize = aspectRatioOptions[value as AspectRatioKey];
 
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
        setImage((prevState: any) => ({
         ...prevState,
         aspectRatio: imageSize.aspectRatio,
@@ -174,6 +174,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
     const onInputChangeHandler = (fieldName: string, value: string, type: string, onChangeField: (value: string) => void) => {
       debounce(() => {                         //waits for specific time then submit the entry of input 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setNewTransformation((prev: any) => ({
             ...prev,
             [type]: {
