@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-// @ts-ignore
 const Home = async({searchParams}: SearchParamProps) => {
 
   const page = Number(searchParams?.page) || 1;
